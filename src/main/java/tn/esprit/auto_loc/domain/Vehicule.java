@@ -1,17 +1,20 @@
 package tn.esprit.auto_loc.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name = "vehicule")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Vehicule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,4 +33,16 @@ public class Vehicule {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private StatutVehicule statut;
+
+    @ManyToOne Agence agence;
+    @OneToMany(mappedBy="vehicule")
+    List<Reservation> reservations;
+    @OneToMany(mappedBy="vehicule")
+    List<Maintenance> maintenances;
+    @ManyToMany
+    @JoinTable(
+            name = "vehicule_equipement",
+            joinColumns = @JoinColumn(name = "vehicule_id"),
+            inverseJoinColumns = @JoinColumn(name = "equipement_id"))
+    private Set<Equipement> equipements;
 }

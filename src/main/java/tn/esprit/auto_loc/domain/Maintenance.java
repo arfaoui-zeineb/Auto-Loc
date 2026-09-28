@@ -24,4 +24,5 @@ public class Maintenance {
     private LocalDate dateFin;
     @Column(length = 500)
     private String description;
+    @ManyToOne Vehicule vehicule;
 }
