@@ -32,12 +32,12 @@ public class AgenceService implements IAgenceService {
 
     @Override
     public Agence retrieveAgence(Long idAgence) {
-        return agenceRepo.findById(Math.toIntExact(idAgence)).orElse(null);
+        return agenceRepo.findById(idAgence).orElse(null);
     }
 
     @Override
     public void removeAgence(Long idAgence) {
-        agenceRepo.deleteById(Math.toIntExact(idAgence));
+        agenceRepo.deleteById(idAgence);
     }
 
     @Override

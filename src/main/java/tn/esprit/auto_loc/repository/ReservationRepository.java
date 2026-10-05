@@ -4,5 +4,5 @@ import tn.esprit.auto_loc.domain.Reservation;
 
 
 
-public interface ReservationRepository extends CrudRepository {
+public interface ReservationRepository extends CrudRepository<Reservation, Long> {
 }

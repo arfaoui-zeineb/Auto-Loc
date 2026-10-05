@@ -30,12 +30,12 @@ public class VehiculeService implements IVehiculeService {
 
     @Override
     public Vehicule retrieveVehicule(Long idVehicule) {
-        return vehiculeRepo.findById(Math.toIntExact(idVehicule)).orElse(null);
+        return vehiculeRepo.findById(idVehicule).orElse(null);
     }
 
     @Override
     public void removeVehicule(Long idVehicule) {
-        vehiculeRepo.deleteById(Math.toIntExact(idVehicule));
+        vehiculeRepo.deleteById(idVehicule);
     }
 
     @Override
