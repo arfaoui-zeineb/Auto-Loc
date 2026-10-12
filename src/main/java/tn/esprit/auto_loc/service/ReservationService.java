@@ -1,5 +1,6 @@
 package tn.esprit.auto_loc.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.auto_loc.domain.Reservation;
@@ -8,10 +9,10 @@ import tn.esprit.auto_loc.repository.ReservationRepository;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ReservationService implements IReservationService {
 
-    @Autowired
-    ReservationRepository reservationRepo;
+final    ReservationRepository reservationRepo;
 
     @Override
     public List<Reservation> retrieveAllReservations() {

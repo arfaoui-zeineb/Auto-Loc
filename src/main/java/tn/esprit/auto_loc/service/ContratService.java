@@ -1,5 +1,6 @@
 package tn.esprit.auto_loc.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.auto_loc.domain.Contrat;
@@ -8,10 +9,10 @@ import tn.esprit.auto_loc.repository.ContratRepository;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ContratService implements IContratService {
 
-    @Autowired
-    ContratRepository contratRepo;
+    final ContratRepository contratRepo;
 
     @Override
     public List<Contrat> retrieveAllContrats() {

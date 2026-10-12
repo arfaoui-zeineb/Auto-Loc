@@ -1,14 +1,17 @@
 package tn.esprit.auto_loc.service;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import tn.esprit.auto_loc.domain.Client;
 import tn.esprit.auto_loc.repository.ClientRepository;
 
 import java.util.List;
 
-
+@Service
+@RequiredArgsConstructor
 public class ClientService implements IClientService {
 
-    ClientRepository clRepo;
+    final ClientRepository clRepo;
 
     @Override
     public List<Client> retrieveAllClients() {

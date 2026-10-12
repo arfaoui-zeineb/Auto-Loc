@@ -1,8 +1,8 @@
 package tn.esprit.auto_loc.service;
+import org.springframework.stereotype.Repository;
 import tn.esprit.auto_loc.domain.Client;
 
 import java.util.List;
-
 public interface IClientService {
         List<Client> retrieveAllClients();
         Client addClient(Client c);

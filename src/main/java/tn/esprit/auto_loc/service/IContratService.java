@@ -1,9 +1,9 @@
 package tn.esprit.auto_loc.service;
 
+import org.springframework.stereotype.Repository;
 import tn.esprit.auto_loc.domain.Contrat;
 
 import java.util.List;
-
 public interface IContratService {
 
     List<Contrat> retrieveAllContrats();
