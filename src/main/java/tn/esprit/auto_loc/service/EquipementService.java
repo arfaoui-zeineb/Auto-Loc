@@ -31,7 +31,7 @@ final    EquipementRepository equipementRepo;
 
     @Override
     public Equipement retrieveEquipement(Long idEquipement) {
-        return (Equipement) equipementRepo.findById(idEquipement).orElse(null);
+        return (Equipement) equipementRepo.findById(idEquipement).get();
     }
 
     @Override

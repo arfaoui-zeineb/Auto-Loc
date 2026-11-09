@@ -31,7 +31,7 @@ public class ContratService implements IContratService {
 
     @Override
     public Contrat retrieveContrat(Long idContrat) {
-        return (Contrat) contratRepo.findById(idContrat).orElse(null);
+        return (Contrat) contratRepo.findById(idContrat).get();
     }
 
     @Override

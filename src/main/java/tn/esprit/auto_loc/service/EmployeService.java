@@ -3,6 +3,7 @@ package tn.esprit.auto_loc.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tn.esprit.auto_loc.domain.Agence;
 import tn.esprit.auto_loc.domain.Employe;
 import tn.esprit.auto_loc.repository.AgenceRepository;
@@ -35,7 +36,7 @@ public class EmployeService implements IEmployeService {
 
     @Override
     public Employe retrieveEmploye(Long idEmploye) {
-        return (Employe) employeRepo.findById(idEmploye).orElse(null);
+        return (Employe) employeRepo.findById(idEmploye).get();
     }
 
     @Override
@@ -49,23 +50,19 @@ public class EmployeService implements IEmployeService {
     }
 
     @Override
+    @Transactional
     public Employe desaffecterEmploye(Long idEmploye) {
-        Employe employe = employeRepo.findById(idEmploye).orElse(null);
-        if (employe != null) {
-            employe.setAgence(null);
-            return employeRepo.save(employe);
-        }
-        return null;
+        Employe employe = employeRepo.findById(idEmploye).get();
+        employe.setAgence(null);
+        return employeRepo.save(employe);
     }
 
     @Override
+    @Transactional
     public Employe affecterEmploye(Long idEmploye, Long idAgence) {
-        Employe employe = employeRepo.findById(idEmploye).orElse(null);
-        Agence agence = agenceRepo.findById(idAgence).orElse(null);
-        if (employe != null && agence != null) {
-            employe.setAgence(agence);
-            return employeRepo.save(employe);
-        }
-        return null;
+        Employe employe = employeRepo.findById(idEmploye).get();
+        Agence agence = agenceRepo.findById(idAgence).get();
+        employe.setAgence(agence);
+        return employeRepo.save(employe);
     }
 }

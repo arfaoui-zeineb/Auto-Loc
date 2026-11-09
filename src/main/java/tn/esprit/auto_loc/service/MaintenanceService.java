@@ -32,7 +32,7 @@ public class MaintenanceService implements IMaintenanceService {
 
     @Override
     public Maintenance retrieveMaintenance(Long idMaintenance) {
-        return (Maintenance) maintenanceRepo.findById(idMaintenance).orElse(null);
+        return (Maintenance) maintenanceRepo.findById(idMaintenance).get();
     }
 
     @Override

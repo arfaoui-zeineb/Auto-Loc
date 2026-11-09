@@ -3,6 +3,7 @@ package tn.esprit.auto_loc.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tn.esprit.auto_loc.domain.Agence;
 import tn.esprit.auto_loc.domain.Equipement;
 import tn.esprit.auto_loc.domain.Vehicule;
@@ -37,7 +38,7 @@ public class VehiculeService implements IVehiculeService {
 
     @Override
     public Vehicule retrieveVehicule(Long idVehicule) {
-        return vehiculeRepo.findById(idVehicule).orElse(null);
+        return vehiculeRepo.findById(idVehicule).get();
     }
 
     @Override
@@ -51,35 +52,27 @@ public class VehiculeService implements IVehiculeService {
     }
 
     @Override
+    @Transactional
     public Vehicule affecterVehicule(Long idVehicule, Long idAgence) {
-        Vehicule vehicule = vehiculeRepo.findById(idVehicule).orElse(null);
-        Agence agence = agenceRepo.findById(idAgence).orElse(null);
-        if (vehicule != null && agence != null) {
-            vehicule.setAgence(agence);
-            return vehiculeRepo.save(vehicule);
-        }
-        return null;
+        Vehicule vehicule = vehiculeRepo.findById(idVehicule).get();
+        Agence agence = agenceRepo.findById(idAgence).get();
+        vehicule.setAgence(agence);
+        return vehiculeRepo.save(vehicule);
     }
 
     @Override
+    @Transactional
     public Vehicule affecterEquipement(Long idVehicule, Long idEquipement) {
-        Vehicule vehicule = vehiculeRepo.findById(idVehicule).orElse(null);
-        Equipement equipement = equipementRepo.findById(idEquipement).orElse(null);
-        if (vehicule != null && equipement != null) {
-            vehicule.getEquipements().add(equipement);
-            return vehiculeRepo.save(vehicule);
-        }
-        return null;
+        Vehicule vehicule = vehiculeRepo.findById(idVehicule).get();
+        Equipement equipement = equipementRepo.findById(idEquipement).get();
+        vehicule.getEquipements().add(equipement);
+        return vehiculeRepo.save(vehicule);
     }
 
     @Override
     public Vehicule desaffecterEquipement(Long idVehicule, Long idEquipement) {
-        Vehicule vehicule = vehiculeRepo.findById(idVehicule).orElse(null);
-        Equipement equipement = equipementRepo.findById(idEquipement).orElse(null);
-        if (vehicule != null && equipement != null) {
-            vehicule.getEquipements().remove(equipement);
-            return vehiculeRepo.save(vehicule);
-        }
         return null;
     }
+
+
 }

@@ -30,7 +30,7 @@ public class ClientService implements IClientService {
 
     @Override
     public Client retrieveClient(Long idClient) {
-        return clRepo.findById(idClient).orElse(null);
+        return clRepo.findById(idClient).get();
     }
 
     @Override

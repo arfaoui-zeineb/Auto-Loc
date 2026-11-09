@@ -34,7 +34,7 @@ public class AgenceService implements IAgenceService {
 
     @Override
     public Agence retrieveAgence(Long idAgence) {
-        return agenceRepo.findById(idAgence).orElse(null);
+        return agenceRepo.findById(idAgence).get();
     }
 
     @Override

@@ -32,7 +32,7 @@ public class PaiementService implements IPaiementService {
 
     @Override
     public Paiement retrievePaiement(Long idPaiement) {
-        return (Paiement) paiementRepo.findById(idPaiement).orElse(null);
+        return (Paiement) paiementRepo.findById(idPaiement).get();
     }
 
     @Override

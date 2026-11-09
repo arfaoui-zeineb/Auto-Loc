@@ -31,7 +31,7 @@ final    ReservationRepository reservationRepo;
 
     @Override
     public Reservation retrieveReservation(Long idReservation) {
-        return (Reservation) reservationRepo.findById(idReservation).orElse(null);
+        return (Reservation) reservationRepo.findById(idReservation).get();
     }
 
     @Override
