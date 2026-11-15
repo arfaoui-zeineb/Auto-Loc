@@ -70,8 +70,12 @@ public class VehiculeService implements IVehiculeService {
     }
 
     @Override
+    @Transactional
     public Vehicule desaffecterEquipement(Long idVehicule, Long idEquipement) {
-        return null;
+        Vehicule vehicule = vehiculeRepo.findById(idVehicule).get();
+        Equipement equipement = equipementRepo.findById(idEquipement).get();
+        vehicule.getEquipements().remove(equipement);
+        return vehiculeRepo.save(vehicule);
     }
 
 

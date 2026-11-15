@@ -41,6 +41,18 @@ public class EmployeController {
         return ie.updateEmploye(e);
     }
 
+    @PutMapping("/affecterEmploye/{idEmploye}/{idAgence}")
+    public Employe affecterEmploye(@PathVariable long idEmploye, @PathVariable long idAgence)
+    {
+        return ie.affecterEmploye(idEmploye, idAgence);
+    }
+
+    @PutMapping("/desaffecterEmploye/{idEmploye}")
+    public Employe desaffecterEmploye(@PathVariable long idEmploye)
+    {
+        return ie.desaffecterEmploye(idEmploye);
+    }
+
 
 
 }

@@ -41,6 +41,24 @@ public class VehiculeController {
         return iv.updateVehicule(v);
     }
 
+    @PutMapping("/affecterVehicule/{idVehicule}/{idAgence}")
+    public Vehicule affecterVehicule(@PathVariable long idVehicule, @PathVariable long idAgence)
+    {
+        return iv.affecterVehicule(idVehicule, idAgence);
+    }
+
+    @PutMapping("/affecterEquipement/{idVehicule}/{idEquipement}")
+    public Vehicule affecterEquipement(@PathVariable long idVehicule, @PathVariable long idEquipement)
+    {
+        return iv.affecterEquipement(idVehicule, idEquipement);
+    }
+
+    @PutMapping("/desaffecterEquipement/{idVehicule}/{idEquipement}")
+    public Vehicule desaffecterEquipement(@PathVariable long idVehicule, @PathVariable long idEquipement)
+    {
+        return iv.desaffecterEquipement(idVehicule, idEquipement);
+    }
+
 
 
 }
