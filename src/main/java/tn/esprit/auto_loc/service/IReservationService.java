@@ -2,6 +2,7 @@ package tn.esprit.auto_loc.service;
 
 import tn.esprit.auto_loc.domain.Reservation;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IReservationService {
@@ -17,4 +18,6 @@ public interface IReservationService {
     void removeReservation(Long idReservation);
 
     List<Reservation> addReservations(List<Reservation> reservations);
+
+    List<Reservation> findByDateDebutAfter(LocalDate date);
 }

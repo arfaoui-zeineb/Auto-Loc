@@ -18,4 +18,6 @@ public interface IAgenceService {
     void removeAgence(Long idAgence);
 
     List<Agence> addAgences(List<Agence> agences);
+
+    List<Agence> findByVille(String ville);
 }

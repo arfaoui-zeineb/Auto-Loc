@@ -59,6 +59,12 @@ public class VehiculeController {
         return iv.desaffecterEquipement(idVehicule, idEquipement);
     }
 
+    @GetMapping("/FindByMarque/{marque}")
+    public List<Vehicule> findByMarque(@PathVariable String marque)
+    {
+        return iv.findByMarque(marque);
+    }
+
 
 
 }

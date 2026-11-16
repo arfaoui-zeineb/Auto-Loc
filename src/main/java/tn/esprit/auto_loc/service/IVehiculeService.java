@@ -1,7 +1,10 @@
 package tn.esprit.auto_loc.service;
 
+import tn.esprit.auto_loc.domain.CategorieVehicule;
+import tn.esprit.auto_loc.domain.StatutVehicule;
 import tn.esprit.auto_loc.domain.Vehicule;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface IVehiculeService {
@@ -23,4 +26,16 @@ public interface IVehiculeService {
     Vehicule affecterEquipement(Long idVehicule, Long idEquipement);
 
     Vehicule desaffecterEquipement(Long idVehicule, Long idEquipement);
+
+    List<Vehicule> findByMarque(String marque);
+
+    List<Vehicule> findByMarqueContaining(String marque);
+
+    List<Vehicule> findByCategorie(CategorieVehicule categorie);
+
+    List<Vehicule> findByStatut(StatutVehicule statut);
+
+    List<Vehicule> findByTarifJournalierGreaterThan(BigDecimal tarif);
+
+    List<Vehicule> findByMarqueAndStatut(String marque, StatutVehicule statut);
 }

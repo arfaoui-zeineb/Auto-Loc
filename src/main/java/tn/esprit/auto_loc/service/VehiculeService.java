@@ -5,12 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tn.esprit.auto_loc.domain.Agence;
+import tn.esprit.auto_loc.domain.CategorieVehicule;
 import tn.esprit.auto_loc.domain.Equipement;
+import tn.esprit.auto_loc.domain.StatutVehicule;
 import tn.esprit.auto_loc.domain.Vehicule;
 import tn.esprit.auto_loc.repository.AgenceRepository;
 import tn.esprit.auto_loc.repository.EquipementRepository;
 import tn.esprit.auto_loc.repository.VehiculeRepository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -76,6 +79,36 @@ public class VehiculeService implements IVehiculeService {
         Equipement equipement = equipementRepo.findById(idEquipement).get();
         vehicule.getEquipements().remove(equipement);
         return vehiculeRepo.save(vehicule);
+    }
+
+    @Override
+    public List<Vehicule> findByMarque(String marque) {
+        return vehiculeRepo.findByMarque(marque);
+    }
+
+    @Override
+    public List<Vehicule> findByMarqueContaining(String marque) {
+        return vehiculeRepo.findByMarqueContaining(marque);
+    }
+
+    @Override
+    public List<Vehicule> findByCategorie(CategorieVehicule categorie) {
+        return vehiculeRepo.findByCategorie(categorie);
+    }
+
+    @Override
+    public List<Vehicule> findByStatut(StatutVehicule statut) {
+        return vehiculeRepo.findByStatut(statut);
+    }
+
+    @Override
+    public List<Vehicule> findByTarifJournalierGreaterThan(BigDecimal tarif) {
+        return vehiculeRepo.findByTarifJournalierGreaterThan(tarif);
+    }
+
+    @Override
+    public List<Vehicule> findByMarqueAndStatut(String marque, StatutVehicule statut) {
+        return vehiculeRepo.findByMarqueAndStatut(marque, statut);
     }
 
 
