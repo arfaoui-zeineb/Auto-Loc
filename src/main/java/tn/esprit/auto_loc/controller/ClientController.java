@@ -3,6 +3,7 @@ package tn.esprit.auto_loc.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.auto_loc.DTO.ClientDTO;
 import tn.esprit.auto_loc.domain.Client;
 import tn.esprit.auto_loc.service.ClientService;
 import tn.esprit.auto_loc.service.IClientService;
@@ -41,6 +42,12 @@ public class ClientController {
     public Client updateClient (@RequestBody Client c)
     {
         return ic.updateClient(c);
+    }
+
+    @GetMapping("/{idClient}/details")
+    public ClientDTO getDetails(@PathVariable Long idClient)
+    {
+        return ic.getDetailsClient(idClient);
     }
 
 

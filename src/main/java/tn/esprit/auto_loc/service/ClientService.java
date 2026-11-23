@@ -2,6 +2,7 @@ package tn.esprit.auto_loc.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.auto_loc.DTO.ClientDTO;
 import tn.esprit.auto_loc.domain.Client;
 import tn.esprit.auto_loc.repository.ClientRepository;
 
@@ -12,6 +13,7 @@ import java.util.List;
 public class ClientService implements IClientService {
 
     final ClientRepository clRepo;
+    final ClientMapper clientMapper;
 
     @Override
     public List<Client> retrieveAllClients() {
@@ -41,5 +43,13 @@ public class ClientService implements IClientService {
     @Override
     public List<Client> addClients(List<Client> clients) {
         return (List<Client>) clRepo.saveAll(clients);
+    }
+
+    @Override
+    public ClientDTO getDetailsClient(Long idClient) {
+        Client client = clRepo.findById(idClient)
+                .orElseThrow(() -> new RuntimeException("Détails du client non trouvés"));
+        // Conversion Entité -> DTO
+        return clientMapper.toDto(client);
     }
 }

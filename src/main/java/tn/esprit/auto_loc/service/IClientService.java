@@ -1,5 +1,6 @@
 package tn.esprit.auto_loc.service;
 import org.springframework.stereotype.Repository;
+import tn.esprit.auto_loc.DTO.ClientDTO;
 import tn.esprit.auto_loc.domain.Client;
 
 import java.util.List;
@@ -10,4 +11,5 @@ public interface IClientService {
         Client retrieveClient(Long idClient);
         void removeClient(Long idClient);
         List<Client> addClients (List<Client> clients);
+        ClientDTO getDetailsClient(Long idClient);
 }
